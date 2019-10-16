@@ -1,0 +1,51 @@
+源代码：
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String args[ ])
+    { 
+		Scanner sc = new Scanner(System.in); 
+		int m,n;
+		m=sc.nextInt();
+		for(int b=1;b<=m;b++) 
+		{
+		    n=sc.nextInt();
+		    int k=0,i,j;
+		    int [][]a=new int[n+1][n+1];
+            int x,y,z;
+            for(i=1; i<=n; i++)
+            {
+                for(j=i; j<=n-i+1; j++)
+                {
+                    k++;
+                    a[i][j]=k;
+                }
+                for( x=i+1; x<=n-i+1; x++)
+                {
+                    k++;
+                    a[x][n-i+1]=k;
+                }
+                for( y=n-i; y>=i; y--)
+                {
+                    k++;
+                    a[n-i+1][y]=k;
+                 }
+                 for( z=n-i; z>i; z--)
+                 {
+                     k++;
+                     a[z][i]=k;
+                  }
+              }
+              for(i=1; i<=n; i++)
+              {
+                 for(j=1; j<n; j++)
+            	    System.out.printf("%d\t",a[i][j]);
+               System.out.printf("%d\n",a[i][j]);
+              }
+              System.out.println();
+        }
+		sc.close();
+    }
+	
+}
+ 
