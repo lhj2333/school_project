@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout-admin">
+
+
+    <div class="layui-header">
+
+
+        <div class="layui-logo">计算器</div>
+
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+
+                    关于
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">关于计算器</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">
+
+                    帮助
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">帮助文档</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <!--    左侧导航菜单-->
+    <div class="layui-side layui-bg-black">
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item">
+                <a href="3.1.html" target="ifram_Content">
+                    <i class="layui-icon layui-icon-user"></i>
+                    计算器
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!--    操作主内容-->
+    <div class="layui-body" style="overflow: hidden">
+        <!--iframe相当于一个窗口，可以加载页面-->
+        <iframe src="" name="ifram_Content" frameborder="0" style="height: 100%;width: 100%;padding-top:0px "></iframe>
+    </div>
+
+    底部固定区域
+    <div class="layui-footer">
+        计算器
+    </div>
+</div>
+
+<script>
+    layui.use(['element','layer'])
+</script>
+</body>
+</html>
