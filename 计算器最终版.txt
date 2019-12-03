@@ -1,0 +1,261 @@
+计算器完善
+
+源代码：
+主界面：
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout-admin">
+
+
+    <div class="layui-header">
+
+
+        <div class="layui-logo">计算器</div>
+
+
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+
+                    关于
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">关于计算器</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">
+
+                    帮助
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">帮助文档</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <!--    左侧导航菜单-->
+    <div class="layui-side layui-bg-black">
+        <ul class="layui-nav layui-nav-tree">
+            <li class="layui-nav-item">
+                <a href="3.1.html" target="ifram_Content">
+                    <i class="layui-icon layui-icon-user"></i>
+                    计算器
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!--    操作主内容-->
+    <div class="layui-body" style="overflow: hidden">
+        <!--iframe相当于一个窗口，可以加载页面-->
+        <iframe src="" name="ifram_Content" frameborder="0" style="height: 100%;width: 100%;padding-top:0px "></iframe>
+    </div>
+
+    底部固定区域
+    <div class="layui-footer">
+        计算器
+    </div>
+</div>
+
+<script>
+    layui.use(['element','layer'])
+</script>
+</body>
+</html>
+
+
+计算器界面：
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <!--将按键内容以字符串形式存储在文字框中当按钮为“=”时，调用eval方法计算结果然后将结果输出文字框中-->
+    <script type="text/javascript">
+        var numresult;
+        var str;
+        function onclicknum(nums) {
+            str = document.getElementById("nummessege");
+            str.value = str.value + nums;
+
+        }
+        function onclickclear() {
+            str = document.getElementById("nummessege");
+            str.value = "";
+        }
+        function onclickresult() {
+            str = document.getElementById("nummessege");
+
+            try{
+                numresult = eval(str.value);  //执行该方法
+            }
+            catch(err)
+            {
+                numresult="INPUT ERROR";
+            }
+
+
+            str.value = numresult;
+            if(str.value=="Infinity") str.value="VALUE ERROR";
+
+
+        }
+        function onclickBackspace() {
+            str = document.getElementById("nummessege");
+            num=str.value;
+            var newstr=num.substring(0,num.length-1);
+            str.value = newstr;
+        }
+    </script>
+    <style>
+        body{
+            background-image: url("./image/极光.jpg") ;
+            background-size: 110% 100%;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<!--定义按键表格,每个按键对应一个事件触发-->
+<table border="0" align="center" bgColor="#808080"
+       style="height: 510px; width: 270px" cellpadding="0px" cellspacing="0px"
+       style="text-align:center;border:solid #333333;border-width:thin thin ;">
+
+    <tr>
+        <td colspan="4">
+            <input type="text" maxlength="14" id="nummessege"
+                   style="height: 90px; width: 400px; font-size: 50px" required /><!--pattern="[a-zA-Z0-9]+"-->
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="7" id="7" onclick="onclicknum(7)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="8" id="8" onclick="onclicknum(8)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="9" id="9" onclick="onclicknum(9)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="+" id="add" onclick="onclicknum('+')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="4" id="4" onclick="onclicknum(4)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="5" id="5" onclick="onclicknum(5)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="6" id="6" onclick="onclicknum(6)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="-" id="sub" onclick="onclicknum('-')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="1" id="1" onclick="onclicknum(1)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="2" id="2" onclick="onclicknum(2)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="3" id="3" onclick="onclicknum(3)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+
+        <td>
+            <input type="button" value="*" id="mul" onclick="onclicknum('*')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="0" id="0" onclick="onclicknum(0)"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="." id="point" onclick="onclicknum('.')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="^" id="division"
+                   onclick="onclicknum('^')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value="/" id="cf" onclick="onclicknum('/')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+
+
+    </tr>
+    <tr>
+
+        <td>
+            <input type="button" value="(" id="zuo" onclick="onclicknum('(')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td>
+            <input type="button" value=")" id="you" onclick="onclicknum(')')"
+                   style="height: 70px; width: 100px; font-size: 35px">
+        </td>
+        <td colspan="2">
+            <input type="button" value="<-" id="tui"
+                   onclick="onclickBackspace('<-')"
+                   style="height: 70px; width: 200px; font-size: 35px">
+        </td>
+
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <input type="button" value="Del" id="clear"
+                   onclick="onclickclear()"
+                   style="height: 70px; width: 200px; font-size: 35px" />
+        </td>
+        <td colspan="2">
+            <input type="button" value="=" id="result"
+                   onclick="onclickresult()"
+                   style="height: 70px; width: 200px; font-size: 35px" />
+        </td>
+
+    </tr>
+
+</table>
+</body>
+</html>
+
+ 
